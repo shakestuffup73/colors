@@ -1,4 +1,5 @@
 import ColorBox from "../ColorBox/ColorBox";
+import './Palette.css'
 
 const Palette = (props) => {
 
