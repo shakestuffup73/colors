@@ -1,8 +1,9 @@
-const ColorBox = ({color}) => {
+const ColorBox = ({name, background}) => {
   return ( 
     <>
-      <div className='ColorBox'>
-        <span style={{color: `${color.color}`}}>MORE</span>
+      <div className='ColorBox' style={{background: background}}>
+        <span>{name}</span>
+        <span>MORE</span>
       </div>
     </>
   );
