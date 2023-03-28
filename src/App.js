@@ -1,11 +1,11 @@
 import './App.css';
-import Palette from './Palette.js'
+import Palette from './Palette/Palette.jsx'
 import seedColors from './seedColors';
 
 function App() {
   return (
     <div className="App">
-      <Palette {...seedColors} />
+      <Palette seedColors={{...seedColors[1]}} />
     </div>
   );
 }
