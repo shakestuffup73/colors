@@ -9,9 +9,9 @@ const ColorBox = ({name, background}) => {
             <div className='box-content'>
               <span>{name}</span>
             </div>
-            <button className='copy-button'>Copy</button>
+            <button className='copy-button'>copy</button>
           </div>
-          <span className='see-more'>More</span>
+          <span className='see-more'>more</span>
         </div>
       </CopyToClipboard>
   );
