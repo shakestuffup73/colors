@@ -6,8 +6,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { Snackbar, IconButton } from '@mui/material';
+import { Close } from '@mui/icons-material'
 
-const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange  }) => {
+const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, closeSnackBar  }) => {
 
   return ( 
     <>
@@ -43,6 +45,19 @@ const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange  }) => {
             </Select>
           </FormControl>
         </Box>
+        <Snackbar 
+          open={open}
+          anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}
+          autoHideDuration={1000}
+          message={<span id='message-id'>Format Changed!</span>}
+          ContentProps={{
+            "aria-describedby": "message"
+          }}
+          action={[
+            <IconButton onClick={closeSnackBar}><Close /></IconButton>
+          ]}
+        />
+
       </header>
     </>
   );

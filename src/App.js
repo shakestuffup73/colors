@@ -9,13 +9,19 @@ function App() {
 
   const [sliderLevel, setSliderLevel] = useState(500);
   const [format, setFormat ] = useState('hex')
+  const [open, setOpen] = useState(true)
+
+  const closeSnackBar = () => {
+    setOpen(false)
+  }
 
   const handleSliderChange = (value) => {
     setSliderLevel(value)
   }
 
-  function handleChange(e) {
+  function handleChange (e) {
     setFormat(e.target.value)
+    setOpen(true)
   }
 
   return (
@@ -25,6 +31,8 @@ function App() {
         handleSliderChange={handleSliderChange}
         format={format}
         handleChange={handleChange}
+        open={open}
+        closeSnackBar={closeSnackBar}
       />
       <Palette 
         palette={generatePalette(seedColors[2])} 
