@@ -15,7 +15,6 @@ function App() {
   }
 
   function handleChange(e) {
-    console.log('this is e.target.value', e.target.value)
     setFormat(e.target.value)
   }
 
