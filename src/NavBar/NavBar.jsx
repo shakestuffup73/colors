@@ -54,10 +54,15 @@ const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, c
             "aria-describedby": "message"
           }}
           action={[
-            <IconButton onClick={closeSnackBar}><Close /></IconButton>
+            <IconButton
+              onClick={closeSnackBar}
+              color='inherit'
+              key='close'
+            >
+              <Close />
+            </IconButton>
           ]}
         />
-
       </header>
     </>
   );
