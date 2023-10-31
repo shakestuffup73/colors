@@ -20,9 +20,11 @@ const Palette = (props) => {
   return ( 
     <>
       <div className="Palette">
-        <Slider defaultValue={sliderLevel} min={100} max={900} step={100}
-          onChange={handleSliderChange}
-        />
+        <div className="slider">
+          <Slider defaultValue={sliderLevel} min={100} max={900} step={100}
+            onChange={handleSliderChange}
+          />
+        </div>
         <div className="Palette-colors">
           {colorBoxes}
         </div>
