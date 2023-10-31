@@ -6,7 +6,7 @@ const Palette = (props) => {
 
   console.log('this is props:', props)
 
-  const colorBoxes = props.seedColors.colors.map(color => (
+  const colorBoxes = props.seedColors.colors?.map(color => (
     <ColorBox name={color.name} background={color.color} key={uuidv4()} />
   ))
 
