@@ -49,7 +49,7 @@ const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, c
           open={open}
           anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}
           autoHideDuration={1000}
-          message={<span id='message-id'>Format Changed!</span>}
+          message={<span id='message-id'>Color Format Changed!</span>}
           ContentProps={{
             "aria-describedby": "message"
           }}
