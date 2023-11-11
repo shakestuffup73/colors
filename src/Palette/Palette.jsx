@@ -14,6 +14,10 @@ const Palette = ({ sliderLevel, palette, format }) => {
         <div className="Palette-colors">
           {colorBoxes}
         </div>
+        <footer className="palette-footer">
+          {palette.paletteName}
+          <span className="emoji">{palette.emoji}</span>
+        </footer>
       </div>
     </>
   );
