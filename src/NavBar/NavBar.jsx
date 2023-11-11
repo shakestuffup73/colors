@@ -29,22 +29,24 @@ const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, c
             />
           </div>
         </div>
-        <Box sx={{ minWidth: 120 }}>
-          <FormControl fullWidth style={{marginTop: '5px'}}>
-            <InputLabel id="demo-simple-select-label">Color Options</InputLabel>
-            <Select 
-              id="select"
-              value={format}
-              label="Color Options"
-              onChange={handleChange}
-              style={{width: "290px"}}
-            >
-              <MenuItem value='hex'>HEX - #ffffff</MenuItem>
-              <MenuItem value='rgb'>RGB - rgb(255, 255, 255)</MenuItem>
-              <MenuItem value='rgba'>RGBA - rgba(255, 255, 255, 1.0)</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
+        <div className="select-container">
+          <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth style={{marginTop: '5px'}}>
+              <InputLabel id="demo-simple-select-label">Color Options</InputLabel>
+              <Select 
+                id="select"
+                value={format}
+                label="Color Options"
+                onChange={handleChange}
+                style={{width: "290px"}}
+              >
+                <MenuItem value='hex'>HEX - #ffffff</MenuItem>
+                <MenuItem value='rgb'>RGB - rgb(255, 255, 255)</MenuItem>
+                <MenuItem value='rgba'>RGBA - rgba(255, 255, 255, 1.0)</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+        </div>
         <Snackbar 
           open={open}
           anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}

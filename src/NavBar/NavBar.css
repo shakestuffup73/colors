@@ -29,6 +29,13 @@
   display: inline-block;
 }
 
+.select-container {
+  margin-left: auto;
+  margin-top: 2rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
+
 .rc-slider.rc-slider .rc-slider-track {
   background-color: transparent;
 }
