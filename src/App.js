@@ -3,7 +3,8 @@ import Palette from './Palette/Palette.jsx'
 import seedColors from './seedColors.js';
 import generatePalette from './colorHelpers.js'
 import NavBar from './NavBar/NavBar';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { Routes, Route, useParams } from 'react-router-dom'
 
 function App() {
 
@@ -24,22 +25,57 @@ function App() {
     setOpen(true)
   }
 
+  function findPalette (id) {
+    return seedColors.find(function(palette) {
+      return palette.id === id;
+    })
+  }
+
+  function PaletteWithParams() {
+    const params = useParams();
+    const palette = useMemo(() => generatePalette(findPalette(params.id)), [params.id]);
+    return (
+      <>
+        <NavBar 
+          sliderLevel={sliderLevel}
+          handleSliderChange={handleSliderChange}
+          format={format}
+          handleChange={handleChange}
+          open={open}
+          closeSnackBar={closeSnackBar}
+        />
+        <Palette palette={palette} sliderLevel={sliderLevel} format={format}/>
+      </>
+    )
+  }
+
+  function HomePalette() {
+    return (
+      <>
+        <NavBar 
+          sliderLevel={sliderLevel}
+          handleSliderChange={handleSliderChange}
+          format={format}
+          handleChange={handleChange}
+          open={open}
+          closeSnackBar={closeSnackBar}
+        />
+        <Palette 
+          palette={generatePalette(seedColors[2])} 
+          sliderLevel={sliderLevel}
+          format={format}
+        />
+      </>
+    )
+  }
+
   return (
-    <div className="App">
-      <NavBar 
-        sliderLevel={sliderLevel}
-        handleSliderChange={handleSliderChange}
-        format={format}
-        handleChange={handleChange}
-        open={open}
-        closeSnackBar={closeSnackBar}
-      />
-      <Palette 
-        palette={generatePalette(seedColors[2])} 
-        sliderLevel={sliderLevel}
-        format={format}
-      />
-    </div>
+    <>
+      <Routes>
+        <Route exact path="/" element={<HomePalette />}/>
+        <Route exact path="/palette/:id" element={<PaletteWithParams />}/>
+      </Routes>
+    </>
   );
 }
 
