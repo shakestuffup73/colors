@@ -18,7 +18,9 @@ const MainDiv = styled('div')(() => ({
 const ColorsDiv = styled('div')(() => ({
   border: '3px solid teal',
   height: '130px',
-  width: '100%',
+  backgroundColor: '#f2efee',
+  borderRadius: '5px',
+  overflow: 'hidden',
 }))
 
 const Title = styled('h4')(() => ({
@@ -48,17 +50,16 @@ const MiniColors = styled('div')(() => ({
 
 const MiniPalette = (props) => {
   const { seedColor } = props;
+  console.log(props);
 
   return ( 
     <>
       <MainDiv>
 
         <ColorsDiv>
-          <MiniColors>
-            {seedColor.colors.map(color => (
-              <div style={{ backgroundColor: color }} key={uuidv4()} />
-            ))}
-          </MiniColors>
+          {seedColor.colors.map(color => (
+            <MiniColors style={{ backgroundColor: color.color }} key={uuidv4()} />
+          ))}
         </ColorsDiv>
 
         <Title>{seedColor.paletteName}</Title><Emoji>{seedColor.emoji}</Emoji>
