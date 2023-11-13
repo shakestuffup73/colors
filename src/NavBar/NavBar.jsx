@@ -8,6 +8,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Snackbar, IconButton } from '@mui/material';
 import { Close } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 
 const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, closeSnackBar  }) => {
 
@@ -15,7 +16,7 @@ const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, c
     <>
       <header className="NavBar">
         <div className="logo">
-          <a href='/'>reactcolorpicker</a>
+          <Link to='/'>reactcolorpicker</Link>
         </div>
         <div className="slider-container">
           <span>Level: {sliderLevel} </span>
