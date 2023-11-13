@@ -53,14 +53,7 @@ function App() {
   function HomePaletteList() {
     return (
       <>
-        <NavBar 
-          sliderLevel={sliderLevel}
-          handleSliderChange={handleSliderChange}
-          format={format}
-          handleChange={handleChange}
-          open={open}
-          closeSnackBar={closeSnackBar}
-        />
+        <h1>React Colors Refactored</h1>
         <PaletteList palettes={seedColors} />
       </>
     )

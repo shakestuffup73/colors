@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom"
-
+import MiniPalette from "../MiniPalette/MiniPalette";
+import { v4 as uuidv4 } from 'uuid'
 
 const PaletteList = ({ palettes }) => {
 
   return ( 
     <>
       <div>
+        <MiniPalette />
         <h1>React Colors</h1>
           {palettes.map(palette => (
-            <p>
-              <Link to={`/palette/${palette.id}`}>{palette.paletteName}</Link>
-            </p>
+            <MiniPalette {...palette} key={uuidv4()} />
           ))}
       </div>
     </>
