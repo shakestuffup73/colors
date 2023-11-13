@@ -54,7 +54,7 @@ function App() {
     return (
       <>
         <h1>React Colors Refactored</h1>
-        <PaletteList palettes={seedColors} />
+        <PaletteList seedColors={seedColors} />
       </>
     )
   }

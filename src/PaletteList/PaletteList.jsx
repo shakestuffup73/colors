@@ -16,7 +16,6 @@ const ContainerDiv = styled('div')(() => ({
   alignItems: 'flex-start',
   flexDirection: 'column',
   flexWrap: 'wrap',
-  border: '2px solid white'
 }))
 
 const Nav = styled('nav')(() => ({
@@ -34,20 +33,20 @@ const PalettesDiv = styled('div')(() => ({
   gridGap: '5%'
 }))
 
-const PaletteList = ({ palettes }) => {
+const PaletteList = (props) => {
+  const { seedColors } = props;
+
   return ( 
     <>
       <RootDiv>
         <ContainerDiv>
+          <Nav><h1>React Colors</h1></Nav>
 
-        <Nav><h1>React Colors</h1></Nav>
-
-        <PalettesDiv>
-          <MiniPalette />
-          {palettes.map(palette => (
-            <MiniPalette {...palette} key={uuidv4()} />
-          ))}
-        </PalettesDiv>
+          <PalettesDiv>
+            {seedColors.map(seedColor => (
+              <MiniPalette key={uuidv4()} seedColor={seedColor}/>
+            ))}
+          </PalettesDiv>
 
         </ContainerDiv>
       </RootDiv>
