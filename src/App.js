@@ -1,5 +1,6 @@
 import './App.css';
 import Palette from './Palette/Palette.jsx'
+import PaletteList from './PaletteList/PaletteList.jsx'
 import seedColors from './seedColors.js';
 import generatePalette from './colorHelpers.js'
 import NavBar from './NavBar/NavBar';
@@ -49,7 +50,7 @@ function App() {
     )
   }
 
-  function HomePalette() {
+  function HomePaletteList() {
     return (
       <>
         <NavBar 
@@ -60,11 +61,7 @@ function App() {
           open={open}
           closeSnackBar={closeSnackBar}
         />
-        <Palette 
-          palette={generatePalette(seedColors[2])} 
-          sliderLevel={sliderLevel}
-          format={format}
-        />
+        <PaletteList palettes={seedColors} />
       </>
     )
   }
@@ -72,7 +69,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<HomePalette />}/>
+        <Route exact path="/" element={<HomePaletteList />}/>
         <Route exact path="/palette/:id" element={<PaletteWithParams />}/>
       </Routes>
     </>
