@@ -1,4 +1,5 @@
 import MiniPalette from "../MiniPalette/MiniPalette";
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -35,6 +36,11 @@ const PalettesDiv = styled('div')(() => ({
 
 const PaletteList = (props) => {
   const { seedColors } = props;
+  const navigate = useNavigate();
+
+  const goToPalette = (id) => {
+    navigate(`/palette/${id}`);
+  }
 
   return ( 
     <>
@@ -44,7 +50,11 @@ const PaletteList = (props) => {
 
           <PalettesDiv>
             {seedColors.map(seedColor => (
-              <MiniPalette key={uuidv4()} seedColor={seedColor}/>
+              <MiniPalette 
+                key={uuidv4()} 
+                seedColor={seedColor}
+                onClick={() => goToPalette(seedColor.id)}
+              />
             ))}
           </PalettesDiv>
 

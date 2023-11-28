@@ -16,7 +16,6 @@ const MainDiv = styled('div')(() => ({
 }))
 
 const ColorsDiv = styled('div')(() => ({
-  border: '3px solid teal',
   height: '130px',
   backgroundColor: '#f2efee',
   borderRadius: '5px',
@@ -49,8 +48,7 @@ const MiniColors = styled('div')(() => ({
 }))
 
 const MiniPalette = (props) => {
-  const { seedColor } = props;
-  console.log(props);
+  const { seedColor, onClick } = props;
 
   return ( 
     <>
@@ -58,7 +56,7 @@ const MiniPalette = (props) => {
 
         <ColorsDiv>
           {seedColor.colors.map(color => (
-            <MiniColors style={{ backgroundColor: color.color }} key={uuidv4()} />
+            <MiniColors style={{ backgroundColor: color.color }} key={uuidv4()} onClick={onClick} />
           ))}
         </ColorsDiv>
 
