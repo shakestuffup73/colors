@@ -1,6 +1,7 @@
 import './App.css';
 import Palette from './Palette/Palette.jsx'
 import PaletteList from './PaletteList/PaletteList.jsx'
+import SingleColorPalette from './SingleColorPalette/SingleColorPalette.jsx';
 import seedColors from './seedColors.js';
 import generatePalette from './colorHelpers.js'
 import NavBar from './NavBar/NavBar';
@@ -11,7 +12,7 @@ function App() {
 
   const [sliderLevel, setSliderLevel] = useState(500);
   const [format, setFormat ] = useState('hex')
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   const closeSnackBar = () => {
     setOpen(false)
@@ -50,6 +51,24 @@ function App() {
     )
   }
 
+  function SingleColorPaletteWithParams() {
+    const params = useParams();
+    const palette = generatePalette(findPalette(params.id));
+    return (
+      <>
+        <NavBar 
+          sliderLevel={sliderLevel}
+          handleSliderChange={handleSliderChange}
+          format={format}
+          handleChange={handleChange}
+          open={open}
+          closeSnackBar={closeSnackBar}
+        />
+        <SingleColorPalette palette={palette} sliderLevel={sliderLevel} format={format}/>
+      </>
+    )
+  }
+
   function HomePaletteList() {
     return (
       <>
@@ -64,6 +83,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<HomePaletteList />}/>
         <Route exact path="/palette/:id" element={<PaletteWithParams />}/>
+        <Route exact path="/palette/:paletteId/:colorId" element={<SingleColorPaletteWithParams />} />
       </Routes>
     </>
   );

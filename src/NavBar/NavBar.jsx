@@ -51,7 +51,6 @@ const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, c
         <Snackbar 
           open={open}
           anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}
-          autoHideDuration={1000}
           message={<span id='message-id'>Color Format Changed!</span>}
           ContentProps={{
             "aria-describedby": "message"

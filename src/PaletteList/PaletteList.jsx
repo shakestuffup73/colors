@@ -4,15 +4,13 @@ import { styled } from '@mui/material/styles'
 import { v4 as uuidv4 } from 'uuid'
 
 const RootDiv = styled('div')(() => ({
-  backgroundColor: 'blue',
-  height: '100%',
   display: 'flex',
   alignItems: 'flex-start',
   justifyContent: 'center',
 }))
 
 const ContainerDiv = styled('div')(() => ({
-  width: '50%',
+  width: '70%',
   display: 'flex',
   alignItems: 'flex-start',
   flexDirection: 'column',
