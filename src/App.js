@@ -53,7 +53,8 @@ function App() {
 
   function SingleColorPaletteWithParams() {
     const params = useParams();
-    const palette = generatePalette(findPalette(params.id));
+    const palette = useMemo(() => generatePalette(findPalette(params.paletteId)), [params.paletteId]);
+
     return (
       <>
         <NavBar 
@@ -72,7 +73,7 @@ function App() {
   function HomePaletteList() {
     return (
       <>
-        <h1>React Colors Refactored</h1>
+        <div id="titleDiv"><h1>React Colors Refactored</h1></div>
         <PaletteList seedColors={seedColors} />
       </>
     )

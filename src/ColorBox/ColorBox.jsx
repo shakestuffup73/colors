@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom';
 
 const ColorBox = ({name, background, paletteId, colorId }) => {
 
-  console.log('this is paletteId in ColorBox', paletteId)
-  console.log('this is colorId in ColorBox', colorId)
-
   const [showCopy, setShowCopy] = useState(false)
   
   const copyToClipboard = () => {

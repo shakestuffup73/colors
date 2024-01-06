@@ -1,26 +1,32 @@
+import React from 'react';
 import ColorBox from "../ColorBox/ColorBox";
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 
-const SingleColorPalette = ({ sliderLevel, palette, format }) => {
+const SingleColorPalette = ({ sliderLevel, format, palette }) => {
+  // Gather shades for the given sliderLevel
+  const shades = palette.colors[sliderLevel].map(color => {
+    return {
+      name: color.name,
+      hex: color.hex, // Assuming color object has a hex value
+      id: color.id
+    };
+  });
 
-  console.log('this is palette', palette)
+  // Generate color boxes for each shade
+  const shadeBoxes = shades.map(shade => (
+    <div key={uuidv4()}>
+      <ColorBox name={shade.name} background={shade.hex} paletteId={palette.id} colorId={shade.id} />
+    </div>
+  ));
 
-  const colorBoxes = palette.colors[sliderLevel]?.map(color => (
-    <ColorBox name={color[format]} background={color[format]} key={uuidv4()} />
-  ))
-
-  return ( 
-    <>
-      <div>
-        <h1>Single Color Palette Component!</h1>
-        <div>{colorBoxes}</div>
-      </div>
-      <footer className="palette-footer">
-          {palette.paletteName}
-        <span className="emoji">{palette.emoji}</span>
-      </footer>
-    </>
+  return (
+    <div>
+      <h1>Single Color Palette Component!</h1>
+      <div>{shadeBoxes}</div>
+    </div>
   );
 }
 
 export default SingleColorPalette;
+
+
