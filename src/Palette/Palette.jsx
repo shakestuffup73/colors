@@ -9,7 +9,7 @@ const Palette = ({ sliderLevel, palette, format }) => {
   ))
 
   return ( 
-    <>
+    <> 
       <div className="Palette">
         <div className="Palette-colors">
           {colorBoxes}

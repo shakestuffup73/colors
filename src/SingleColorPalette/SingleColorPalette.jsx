@@ -1,23 +1,39 @@
 import React from 'react';
 import ColorBox from "../ColorBox/ColorBox";
-import { v4 as uuidv4 } from 'uuid';
+import { useState, useEffect } from 'react';
 
-const SingleColorPalette = ({ sliderLevel, format, palette }) => {
-  // Gather shades for the given sliderLevel
-  const shades = palette.colors[sliderLevel].map(color => {
-    return {
-      name: color.name,
-      hex: color.hex, // Assuming color object has a hex value
-      id: color.id
-    };
-  });
+const SingleColorPalette = ({ sliderLevel, format, palette, colorId }) => {
 
-  // Generate color boxes for each shade
-  const shadeBoxes = shades.map(shade => (
-    <div key={uuidv4()}>
-      <ColorBox name={shade.name} background={shade.hex} paletteId={palette.id} colorId={shade.id} />
-    </div>
+  console.log('this is sliderLevel', sliderLevel)
+  console.log('this is format', format)
+  console.log('this is palette', palette)
+  console.log('this is colorId', colorId)
+
+  // return all shades of given color
+  // gatherShades()
+
+  const [ shades, setShades ] = useState([])
+  
+  useEffect(() => {
+    setShades(gatherShades(palette, colorId))
+  }, [palette, colorId])
+
+  function gatherShades(palette, colorToFilterBy) {
+    let shades = []
+    let allColors = palette.colors
+
+    for (let key in allColors) {
+      shades = shades.concat(
+        allColors[key].filter(color => color.id === colorToFilterBy)
+      )
+    }
+    return shades.slice(1);
+  }
+
+  const shadeBoxes = shades.map(color => (
+    <ColorBox key={color.id} name={color.name} color={color.hex} showLink={false} background={color.hex} />
   ));
+
 
   return (
     <div>
