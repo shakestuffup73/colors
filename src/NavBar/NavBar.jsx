@@ -10,7 +10,7 @@ import { Snackbar, IconButton } from '@mui/material';
 import { Close } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 
-const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, closeSnackBar  }) => {
+const NavBar = ({ sliderLevel, showSliderLevel, handleSliderChange, format, handleChange, open, closeSnackBar  }) => {
 
   return ( 
     <>
@@ -18,7 +18,8 @@ const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, c
         <div className="logo">
           <Link to='/'>reactcolorpicker</Link>
         </div>
-        <div className="slider-container">
+        {showSliderLevel &&
+          <div className="slider-container">
           <span>Level: {sliderLevel} </span>
           <div className="slider">
             <Slider 
@@ -30,6 +31,7 @@ const NavBar = ({ sliderLevel, handleSliderChange, format, handleChange, open, c
             />
           </div>
         </div>
+        }
         <div className="select-container">
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth style={{marginTop: '5px'}}>

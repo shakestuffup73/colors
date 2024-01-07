@@ -10,7 +10,8 @@ import { Routes, Route, useParams } from 'react-router-dom'
 
 function App() {
 
-  const [sliderLevel, setSliderLevel] = useState(500);
+  const [sliderLevel, setSliderLevel] = useState(500)
+  const [showSliderLevel] = useState(true)
   const [format, setFormat ] = useState('hex')
   const [open, setOpen] = useState(false)
 
@@ -45,6 +46,7 @@ function App() {
           handleChange={handleChange}
           open={open}
           closeSnackBar={closeSnackBar}
+          showSliderLevel={showSliderLevel}
         />
         <Palette palette={palette} sliderLevel={sliderLevel} format={format}/>
       </>
@@ -64,6 +66,7 @@ function App() {
           handleChange={handleChange}
           open={open}
           closeSnackBar={closeSnackBar}
+          showSliderLevel={!showSliderLevel}
         />
         <SingleColorPalette palette={palette} sliderLevel={sliderLevel} format={format} colorId={params.colorId}/>
       </>

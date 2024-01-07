@@ -29,13 +29,13 @@ const SingleColorPalette = ({ sliderLevel, format, palette, colorId }) => {
   }
 
   const shadeBoxes = shades.map(color => (
-    <ColorBox key={color.id} name={color.name} color={color.hex} showLink={!showLink} background={color.hex} />
+    <ColorBox key={color.id} name={color.name} color={color.hex} showLink={!showLink} background={color[format]} />
   ));
 
 
   return (
     <div>
-      <h1>Single Color Palette Component!</h1>
+      <h1>Palette</h1>
       <div>{shadeBoxes}</div>
     </div>
   );
