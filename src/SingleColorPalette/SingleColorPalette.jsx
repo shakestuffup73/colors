@@ -4,6 +4,7 @@ import PaletteFooter from '../PaletteFooter/PaletteFooter';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
+
 const SingleColorPalette = ({ format, palette, colorId }) => {
 
   const { id } = palette
@@ -28,7 +29,7 @@ const SingleColorPalette = ({ format, palette, colorId }) => {
   }
 
   const shadeBoxes = shades.map(color => (
-    <ColorBox key={color.id} name={color.name} color={color.hex} showLink={!showLink} background={color[format]} />
+    <ColorBox key={color.name} name={color.name} color={color.hex} showLink={!showLink} background={color[format]} />
   ));
 
   const colorName = colorId.toUpperCase() 
