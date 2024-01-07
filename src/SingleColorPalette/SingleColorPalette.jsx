@@ -9,9 +9,7 @@ const SingleColorPalette = ({ sliderLevel, format, palette, colorId }) => {
   console.log('this is palette', palette)
   console.log('this is colorId', colorId)
 
-  // return all shades of given color
-  // gatherShades()
-
+  const [ showLink ] = useState(false)
   const [ shades, setShades ] = useState([])
   
   useEffect(() => {
@@ -31,7 +29,7 @@ const SingleColorPalette = ({ sliderLevel, format, palette, colorId }) => {
   }
 
   const shadeBoxes = shades.map(color => (
-    <ColorBox key={color.id} name={color.name} color={color.hex} showLink={false} background={color.hex} />
+    <ColorBox key={color.id} name={color.name} color={color.hex} showLink={!showLink} background={color.hex} />
   ));
 
 
