@@ -68,7 +68,7 @@ function App() {
           closeSnackBar={closeSnackBar}
           showSliderLevel={!showSliderLevel}
         />
-        <SingleColorPalette palette={palette} sliderLevel={sliderLevel} format={format} colorId={params.colorId}/>
+        <SingleColorPalette palette={palette} sliderLevel={sliderLevel} format={format} colorId={params.colorId} />
       </>
     )
   }

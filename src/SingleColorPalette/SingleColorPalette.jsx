@@ -2,13 +2,11 @@ import React from 'react';
 import ColorBox from "../ColorBox/ColorBox";
 import PaletteFooter from '../PaletteFooter/PaletteFooter';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 
-const SingleColorPalette = ({ sliderLevel, format, palette, colorId }) => {
+const SingleColorPalette = ({ format, palette, colorId }) => {
 
-  console.log('this is sliderLevel', sliderLevel)
-  console.log('this is format', format)
-  console.log('this is palette', palette)
-  console.log('this is colorId', colorId)
+  const { id } = palette
 
   const [ showLink ] = useState(false)
   const [ shades, setShades ] = useState([])
@@ -39,13 +37,18 @@ const SingleColorPalette = ({ sliderLevel, format, palette, colorId }) => {
     <>
       <div>
         <h1>{ colorName } - Shade Palette</h1>
-        <div>{shadeBoxes}</div>
-      </div>
+          <div className='SingleColorPalette'>{shadeBoxes}
+            <div className='ColorBox'>
+              <div className='box-content'>
+                <div className='back-button'><Link to={`/palette/${id}`}>Go Back</Link></div>
+              </div>
+            </div>
+          </div>
+        </div>
       <div>
         <PaletteFooter palette={palette} />
       </div>
     </>
-
   );
 }
 
