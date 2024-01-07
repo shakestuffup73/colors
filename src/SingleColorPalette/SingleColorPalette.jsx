@@ -1,5 +1,6 @@
 import React from 'react';
 import ColorBox from "../ColorBox/ColorBox";
+import PaletteFooter from '../PaletteFooter/PaletteFooter';
 import { useState, useEffect } from 'react';
 
 const SingleColorPalette = ({ sliderLevel, format, palette, colorId }) => {
@@ -32,12 +33,19 @@ const SingleColorPalette = ({ sliderLevel, format, palette, colorId }) => {
     <ColorBox key={color.id} name={color.name} color={color.hex} showLink={!showLink} background={color[format]} />
   ));
 
+  const colorName = colorId.toUpperCase() 
 
   return (
-    <div>
-      <h1>Palette</h1>
-      <div>{shadeBoxes}</div>
-    </div>
+    <>
+      <div>
+        <h1>{ colorName } - Shade Palette</h1>
+        <div>{shadeBoxes}</div>
+      </div>
+      <div>
+        <PaletteFooter palette={palette} />
+      </div>
+    </>
+
   );
 }
 

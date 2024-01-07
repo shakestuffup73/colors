@@ -1,5 +1,6 @@
 import ColorBox from "../ColorBox/ColorBox";
 import './Palette.css'
+import PaletteFooter from "../PaletteFooter/PaletteFooter";
 import { v4 as uuidv4 } from 'uuid'
 
 const Palette = ({ sliderLevel, palette, format }) => {
@@ -14,10 +15,7 @@ const Palette = ({ sliderLevel, palette, format }) => {
         <div className="Palette-colors">
           {colorBoxes}
         </div>
-        <footer className="palette-footer">
-          {palette.paletteName}
-          <span className="emoji">{palette.emoji}</span>
-        </footer>
+        <PaletteFooter palette={palette} />
       </div>
     </>
   );
