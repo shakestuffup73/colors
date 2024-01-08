@@ -135,3 +135,11 @@ a {
   font-size: 2rem;
   text-shadow: 2px 2px black;
 }
+
+.light-text {
+  color: whitesmoke;
+}
+
+.ColorBox .dark-text {
+  color: rgba(0, 0, 0, .5)
+}
