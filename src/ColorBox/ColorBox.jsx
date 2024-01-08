@@ -14,7 +14,7 @@ const ColorBox = ({name, background, paletteId, colorId, showLink }) => {
       setShowCopy(!showCopy)
     }, 1500)
   }
-
+  
   const isDarkColor = chroma(background).luminance() <= 0.35;
   const isLightColor = chroma(background).luminance() >= 0.4;
 

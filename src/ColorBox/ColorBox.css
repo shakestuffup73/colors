@@ -133,7 +133,7 @@ a {
 
 .copy-msg p {
   font-size: 2rem;
-  text-shadow: 1px 1px rgba(0, 0, 0, .5);
+  text-shadow: .5px .5px rgba(0, 0, 0, .5);
 }
 
 .light-text {
