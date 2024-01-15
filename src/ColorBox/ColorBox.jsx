@@ -14,7 +14,7 @@ const ColorBox = ({name, background, paletteId, colorId, showLink }) => {
       setShowCopy(!showCopy)
     }, 1500)
   }
-  
+
   const isDarkColor = chroma(background).luminance() <= 0.35;
   const isLightColor = chroma(background).luminance() >= 0.4;
 
@@ -26,7 +26,7 @@ const ColorBox = ({name, background, paletteId, colorId, showLink }) => {
             className={`copyOverlay ${showCopy && "show"}`}
           >
             <div className={`copy-msg ${showCopy && "show"}`}>
-              <h1>copied!</h1>
+              <h1>copied</h1>
               <p className={isLightColor && "dark-text"}>{background}</p>
             </div>
           </div>
