@@ -2,6 +2,7 @@ import './App.css';
 import Palette from './Palette/Palette.jsx'
 import PaletteList from './PaletteList/PaletteList.jsx'
 import SingleColorPalette from './SingleColorPalette/SingleColorPalette.jsx';
+import NewPaletteForm from './NewPaletteForm/NewPaletteForm.jsx';
 import seedColors from './seedColors.js';
 import generatePalette from './colorHelpers.js'
 import NavBar from './NavBar/NavBar';
@@ -88,7 +89,7 @@ function App() {
         <Route exact path="/" element={<HomePaletteList />}/>
         <Route exact path="/palette/:id" element={<PaletteWithParams />}/>
         <Route exact path="/palette/:paletteId/:colorId" element={<SingleColorPaletteWithParams />} />
-        <Route exact path="/palette/new" element={<h1>New Palette Form!</h1>} />
+        <Route exact path="/palette/new" element={<NewPaletteForm />} />
       </Routes>
     </>
   );
