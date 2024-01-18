@@ -2,6 +2,7 @@ import MiniPalette from "../MiniPalette/MiniPalette";
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles'
 import { v4 as uuidv4 } from 'uuid'
+import { Link } from 'react-router-dom'
 
 const RootDiv = styled('div')(() => ({
   display: 'flex',
@@ -44,8 +45,7 @@ const PaletteList = (props) => {
     <>
       <RootDiv>
         <ContainerDiv>
-          <Nav><h1>React Colors</h1></Nav>
-
+          <Nav><h1>React Colors</h1> <Link to="/palette/new">Create New Palette</Link></Nav>
           <PalettesDiv>
             {seedColors.map(seedColor => (
               <MiniPalette 
@@ -55,7 +55,6 @@ const PaletteList = (props) => {
               />
             ))}
           </PalettesDiv>
-
         </ContainerDiv>
       </RootDiv>
     </>
