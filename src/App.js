@@ -88,6 +88,7 @@ function App() {
         <Route exact path="/" element={<HomePaletteList />}/>
         <Route exact path="/palette/:id" element={<PaletteWithParams />}/>
         <Route exact path="/palette/:paletteId/:colorId" element={<SingleColorPaletteWithParams />} />
+        <Route exact path="/palette/new" element={<h1>New Palette Form!</h1>} />
       </Routes>
     </>
   );
