@@ -1,6 +1,6 @@
 const NewPaletteForm = () => {
   return ( 
-    <h1>New Palette Form!</h1>
+    <h1>Create your own palette new palette form</h1>
   );
 }
 
