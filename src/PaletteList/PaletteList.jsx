@@ -22,7 +22,7 @@ const Nav = styled('nav')(() => ({
   display: 'flex',
   width: '100%',
   justifyContent: 'space-between',
-  color: 'white',
+  color: 'teal',
 }))
 
 const PalettesDiv = styled('div')(() => ({
@@ -30,8 +30,9 @@ const PalettesDiv = styled('div')(() => ({
   width: '100%',
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 30%)',
-  gridGap: '5%'
+  gridGap: '5%',
 }))
+
 
 const PaletteList = (props) => {
   const { seedColors } = props;
@@ -45,7 +46,10 @@ const PaletteList = (props) => {
     <>
       <RootDiv>
         <ContainerDiv>
-          <Nav><h1>React Colors</h1> <Link to="/palette/new">Create New Palette</Link></Nav>
+          <Nav>
+            <h1>React Colors</h1>
+            <Link to="/palette/new" style={{color: "maroon"}}>Create New Palette</Link>
+          </Nav>
           <PalettesDiv>
             {seedColors.map(seedColor => (
               <MiniPalette 
