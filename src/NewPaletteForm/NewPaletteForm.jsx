@@ -13,7 +13,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { ChromePicker } from 'react-color';
 import { useState } from 'react';
 
-const drawerWidth = 240;
+const drawerWidth = 262;
 
 const greenBase = '#354f52';
 const greenMain = alpha(greenBase, 0.7);
@@ -46,6 +46,13 @@ const theme = createTheme({
     }
   },
 });
+
+const centerContentStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  height: '5%',
+};
 
 const Main = styled('main', {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -94,6 +101,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const NewPaletteForm = () => {
   //const theme = useTheme();
+
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -122,7 +130,7 @@ const NewPaletteForm = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            Color Palette Generator
           </Typography>
         </Toolbar>
       </AppBar>
@@ -145,13 +153,17 @@ const NewPaletteForm = () => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Typography variant="h5">Design Your Palette</Typography>
-        <div>
-          <Button variant="contained" color="secondary">Clear Palette</Button>
-          <Button variant="contained" color="primary">Random Color</Button>
+        <div style={centerContentStyle}>
+          <Typography variant="h5">Design Your Palette</Typography>
         </div>
-        <ChromePicker color={currentColor} onChangeComplete={(newColor) => console.log(newColor)}/>
-        <Button variant="contained" color='cherry'>Add Color</Button>
+        <div>
+          <Button variant="contained" color="secondary" size='small'>Clear Palette</Button>
+          <Button variant="contained" color="primary" size='small'>Random Color</Button>
+        </div>
+        <div style={centerContentStyle}>
+          <ChromePicker color={currentColor} onChangeComplete={(newColor) => console.log(newColor)}/>
+          <Button variant="contained" color='cherry'>Add Color</Button>
+      </div>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
