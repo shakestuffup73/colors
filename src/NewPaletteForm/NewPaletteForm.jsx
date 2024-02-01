@@ -115,8 +115,6 @@ const NewPaletteForm = () => {
   const [currentColor, setCurrentColor] = useState('teal');
 
   function updateCurrentColor(newColor) {
-    console.log('this is newColor', newColor);
-    console.log('this is newColor.hex', newColor.hex)
     setCurrentColor(newColor.hex)
   }
 
