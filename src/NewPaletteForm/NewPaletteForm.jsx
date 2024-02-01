@@ -114,6 +114,13 @@ const NewPaletteForm = () => {
 
   const [currentColor, setCurrentColor] = useState('teal');
 
+  function updateCurrentColor(newColor) {
+    console.log('this is newColor', newColor);
+    console.log('this is newColor.hex', newColor.hex)
+    setCurrentColor(newColor.hex)
+  }
+
+
   return (
     <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex' }}>
@@ -161,9 +168,9 @@ const NewPaletteForm = () => {
           <Button variant="contained" color="primary" size='small'>Random Color</Button>
         </div>
         <div style={centerContentStyle}>
-          <ChromePicker color={currentColor} onChangeComplete={(newColor) => console.log(newColor)}/>
-          <Button variant="contained" color='cherry'>Add Color</Button>
-      </div>
+          <ChromePicker color={currentColor} onChangeComplete={updateCurrentColor}></ChromePicker>
+          <Button variant="contained" style={{background: `${currentColor}`}} size='small'>Add Color</Button>
+        </div>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
