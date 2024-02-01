@@ -14,6 +14,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { ChromePicker } from 'react-color';
 import { useState } from 'react';
 
+import DraggableColorBox from '../DraggableColorBox/DraggableColorBox';
+
 const drawerWidth = 262;
 
 const greenBase = '#354f52';
@@ -52,7 +54,6 @@ const centerContentStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  height: '5%',
 };
 
 const Main = styled('main', {
@@ -187,7 +188,7 @@ const NewPaletteForm = () => {
         <div>
           <ul>
             {paletteColors.map(color => (
-              <li style={{backgroundColor: color}} key={(uuidv4)}>{color}</li>
+              <DraggableColorBox key={(uuidv4)} color={color} />
             ))}
           </ul>
         </div>
