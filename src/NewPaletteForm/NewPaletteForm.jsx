@@ -10,6 +10,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { v4 as uuidv4 } from 'uuid'
 import { ChromePicker } from 'react-color';
 import { useState } from 'react';
 
@@ -113,9 +114,14 @@ const NewPaletteForm = () => {
   };
 
   const [currentColor, setCurrentColor] = useState('teal');
+  const [paletteColors, setPaletteColors ] = useState(["purple"])
 
   function updateCurrentColor(newColor) {
     setCurrentColor(newColor.hex)
+  }
+
+  function addNewColor(currentColor) {
+    setPaletteColors([...paletteColors, currentColor])
   }
 
 
@@ -167,11 +173,24 @@ const NewPaletteForm = () => {
         </div>
         <div style={centerContentStyle}>
           <ChromePicker color={currentColor} onChangeComplete={updateCurrentColor}></ChromePicker>
-          <Button variant="contained" style={{background: `${currentColor}`}} size='small'>Add Color</Button>
+          <Button 
+            variant="contained" 
+            style={{background: `${currentColor}`}} 
+            size='small'
+            onClick={() => addNewColor(currentColor)}
+          >Add Color
+          </Button>
         </div>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
+        <div>
+          <ul>
+            {paletteColors.map(color => (
+              <li key={(uuidv4)}>{color}</li>
+            ))}
+          </ul>
+        </div>
       </Main>
     </Box>
     </ThemeProvider>
