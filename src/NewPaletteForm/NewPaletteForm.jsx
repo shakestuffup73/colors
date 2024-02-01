@@ -13,6 +13,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { v4 as uuidv4 } from 'uuid'
 import { ChromePicker } from 'react-color';
 import { useState } from 'react';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 
 import DraggableColorBox from '../DraggableColorBox/DraggableColorBox';
 
@@ -114,23 +115,39 @@ const NewPaletteForm = () => {
     setOpen(false);
   };
 
-  const [currentColor, setCurrentColor] = useState('teal');
-  const [paletteColors, setPaletteColors ] = useState(["purple"])
+  const handleFormChange = (event) => {
+    setColorName(event.target.value)
+  }
+
+  const [currentColor, setCurrentColor] = useState('teal')
+  const [paletteColors, setPaletteColors ] = useState([])
+  const [colorName, setColorName] = useState('')
 
   function updateCurrentColor(newColor) {
-    setCurrentColor(newColor.hex)
+    console.log('this is newColor in updateCurrentColor', newColor)
+    setCurrentColor(newColor)
+    console.log('this is currentColor', currentColor)
   }
 
   function addNewColor(currentColor) {
-    setPaletteColors([...paletteColors, currentColor])
+    console.log('this is currentColor in addNewColor', currentColor)
+    const newColor = {
+      color: currentColor,
+      name: colorName,
+    }
+    console.log('this is newColor', newColor)
+    setPaletteColors([...paletteColors, newColor])
+    console.log('this is paletteColors', paletteColors)
   }
-
 
   return (
     <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar 
+        position="fixed" 
+        open={open}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -166,21 +183,46 @@ const NewPaletteForm = () => {
         </DrawerHeader>
         <Divider />
         <div style={centerContentStyle}>
-          <Typography variant="h5">Design Your Palette</Typography>
+          <Typography 
+            variant="h5">
+            Design Your Palette
+          </Typography>
         </div>
         <div>
-          <Button variant="contained" color="secondary" size='small'>Clear Palette</Button>
-          <Button variant="contained" color="primary" size='small'>Random Color</Button>
-        </div>
-        <div style={centerContentStyle}>
-          <ChromePicker color={currentColor} onChangeComplete={updateCurrentColor}></ChromePicker>
           <Button 
             variant="contained" 
-            style={{background: `${currentColor}`}} 
-            size='small'
-            onClick={() => addNewColor(currentColor)}
-          >Add Color
+            color="secondary" 
+            size='small'>
+            Clear Palette
           </Button>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            size='small'>
+          Random Color</Button>
+        </div>
+        <div style={centerContentStyle}>
+          <ChromePicker 
+            color={currentColor} 
+            onChangeComplete={updateCurrentColor}
+          />
+          <ValidatorForm
+            onSubmit={() => addNewColor(currentColor)}
+          >
+            <div>
+            <TextValidator 
+              value={colorName} 
+              onChange={(event) => handleFormChange(event)} 
+            />
+            <Button 
+              variant="contained" 
+              style={{background: `${currentColor}`}} 
+              size='small'
+              type='submit'
+            >Add Color
+            </Button>
+            </div>
+          </ValidatorForm>
         </div>
       </Drawer>
       <Main open={open}>
@@ -188,7 +230,7 @@ const NewPaletteForm = () => {
         <div>
           <ul>
             {paletteColors.map(color => (
-              <DraggableColorBox key={(uuidv4)} color={color} />
+              <DraggableColorBox key={uuidv4()} color={color.color.hex} name={color.name} />
             ))}
           </ul>
         </div>

@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 
 
-const DraggableColorBox = ({ color }) => {
+const DraggableColorBox = ({ color, name }) => {
 
   const DraggableColorBoxStyle = styled('div')(() => ({
     width: '20%',
@@ -17,7 +17,7 @@ const DraggableColorBox = ({ color }) => {
       <>
         <DraggableColorBoxStyle 
           style={{backgroundColor: color}}
-        >{color}
+        >{name}
         </DraggableColorBoxStyle>
       </>
   );
