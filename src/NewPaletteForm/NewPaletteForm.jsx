@@ -187,7 +187,7 @@ const NewPaletteForm = () => {
         <div>
           <ul>
             {paletteColors.map(color => (
-              <li key={(uuidv4)}>{color}</li>
+              <li style={{backgroundColor: color}} key={(uuidv4)}>{color}</li>
             ))}
           </ul>
         </div>
